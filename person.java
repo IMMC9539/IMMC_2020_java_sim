@@ -22,7 +22,7 @@ public class person
 		 * if we can implement the actual percent chances and the distance from the cash registar
 		 * and all, this will be a much stronger model.
 		 */
-		double probability = (Math.random());
+		double probability = (int) (Math.random()*5);
 		//buy the item
 		if (probability==0||probability==1||probability==2)
 		{

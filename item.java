@@ -44,6 +44,10 @@ public class item
 		{
 			return itemId;
 		}
+		else if (itemId.contentEquals("wall"))
+		{
+			return "///////";
+		}
 		return itemId+" "+numberOfItems;
 	}
 

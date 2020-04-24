@@ -12,7 +12,7 @@ public class mainClass
 		
 		currentMap.printMap();
 		//each counter is approximately 1-2 minutes
-		for (int i = 0; i<120; i++)
+		for (int i = 0; i<200; i++)
 		{
 			System.out.println("");
 			System.out.println("Start of iteration "+i);
@@ -35,10 +35,13 @@ public class mainClass
 				}
 			}
 			newPeople(people, currentMap);
-			System.out.println("");
-			System.out.println("After iteration "+i);
-			currentMap.printMap();
+//			System.out.println("");
+//			System.out.println("After iteration "+i);
+//			currentMap.printMap();
 		}
+		System.out.println("");
+		System.out.println("Last iteration");
+		currentMap.printMap();
 		
 		System.out.println("");
 		System.out.println("Final Count: ");
