@@ -10,11 +10,11 @@ public class mainClass
 		ArrayList<person> people = new ArrayList<person>();
 		map currentMap = new map();
 		
-		int maxPeople=50;
+		int maxPeople=500;
 		
 		currentMap.printMap();
 		//each counter is approximately 1-2 minutes
-		for (int i = 0; i<20; i++)
+		for (int i = 0; i<200; i++)
 		{
 //			System.out.println("");
 //			System.out.println("Start of iteration "+i);

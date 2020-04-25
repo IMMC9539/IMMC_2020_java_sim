@@ -30,7 +30,7 @@ public class item
 	
 	public void removeItem()
 	{
-		if (numberOfItems!=0)
+		if (numberOfItems>0)
 		{
 			numberOfItems--;
 		}

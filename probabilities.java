@@ -22,7 +22,7 @@ public class probabilities
 	public probabilities(map givenMap, int departmentGivenR, int departmentGivenC, int personGivenR, int personGivenC)
 	{
 		currentMap=givenMap;
-		pp = currentMap.getItem(departmentGivenR, departmentGivenC).getPopularityScore();
+		pp = currentMap.getItem(departmentGivenR, departmentGivenC).getPopularityScore()/100;
 		weight = new double[] {0.2, 0.1, 0.7, 0.7, 0.3, 0.425, 0.425, 0.15};  //In order of opening package, rough handling, and total damage score
 		
 		people = currentMap.getItemNum(personGivenR, personGivenC);
@@ -78,7 +78,7 @@ public class probabilities
 	
 	public double visibility()
 	{
-		double distance = (getDistance()/max_dist)*5;
+		double distance = (getDistance()/max_dist);
 		return Math.pow(Math.E, (-1 * (1 - pp) * (Math.pow(distance, 2))));
 	}
 
