@@ -5,6 +5,7 @@ public class item
 	private int numberOfItems;
 	private String itemId;
 	private double popularity;
+	private int totalArea;
 	
 	public item(String givenItem) 
 	{
@@ -13,11 +14,12 @@ public class item
 		popularity=0;
 	}
 	
-	public item(String givenItem, int givenNumber, double  givenPopularity) 
+	public item(String givenItem, int givenNumber, double  givenPopularity, int givenArea) 
 	{
 		numberOfItems=givenNumber;
 		itemId=givenItem;
 		popularity=givenPopularity;
+		totalArea=givenArea;
 	}
 	
 	public void addItem()
@@ -54,5 +56,15 @@ public class item
 	public int currentItems() 
 	{
 		return numberOfItems;
+	}
+
+	public double getPopularityScore() 
+	{
+		return popularity;
+	}
+
+	public int getTotalArea() 
+	{
+		return totalArea;
 	}
 }

@@ -22,16 +22,35 @@ public class person
 		 * if we can implement the actual percent chances and the distance from the cash registar
 		 * and all, this will be a much stronger model.
 		 */
-		double probability = (int) (Math.random()*5);
+		System.out.println("r: "+r+" c: "+c);
+		double probability = 100*(Math.random());
+		double popularityScore = currentMap.getPopularityScore(newR, newC);
+		
+		probabilities p = new probabilities(currentMap, newR, newC, r, c);
+		
+		double roughHandlingScore = 0.1*p.calculateRoughHandling();
+		double openingPackagingScore = 0.1*p.calculateOpening();
+		double droppingScore = 0.1*p.calculateDropping();
+		
 		//buy the item
-		if (probability==0||probability==1||probability==2)
+		if (probability<popularityScore)
 		{
-			currentMap.removeItem(newR, newC, false);
+			currentMap.removeItem(newR, newC, "bought");
 		}
-		//damage the item
-		else if (probability==3)
+		//damage the item by rough handling
+		else if (popularityScore<=probability&&probability<popularityScore+roughHandlingScore)
 		{
-			currentMap.removeItem(newR, newC, true);
+			currentMap.removeItem(newR, newC, "roughHandled");
+		}
+		//damage the item by opening packaging
+		else if (popularityScore+roughHandlingScore<=probability&&probability<popularityScore+roughHandlingScore+openingPackagingScore)
+		{
+			currentMap.removeItem(newR, newC, "opened");
+		}
+		//damage the item by dropping
+		else if (popularityScore+roughHandlingScore+openingPackagingScore<=probability&&probability<popularityScore+roughHandlingScore+openingPackagingScore+droppingScore)
+		{
+			currentMap.removeItem(newR, newC, "dropped");
 		}
 		//ignore the item and move on
 		else
@@ -39,57 +58,6 @@ public class person
 			//nothing
 		}
 	}
-	
-	/* The whole probability of dropping implementation is the following: 
-	 */
-	
-	//Calculates the probability of products being roughly handled in a given department.
-	public double rough_handling_score(double total_perimeter, double visible_perimeter, double population_density, double product_density, double max_ratio, double v_weight, double ppp_weight)
-	{
-		double ppp = people_per_product_metric(population_density, product_density, max_ratio);
-		double visibility = cashier_visibility(total_perimeter, visible_perimeter);
-		double score = ppp * ppp_weight + visibility * v_weight;
-		return score;
-	}
-	
-	public double opening_packaging_score(double population_density, double product_density, double popularity_score, double visible_perimeter, double total_perimeter, double ppp_weight, double ps_weight, double v_weight, double max_ppp, double max_ratio)
-	{
-		double ppp = people_per_product_metric(population_density, product_density, max_ratio);
-		double vp = cashier_visibility(visible_perimeter, total_perimeter);
-		double score = ppp_weight*ppp + ps_weight*popularity_score + v_weight*vp;
-		return score;
-	}
-	
-	//Calculates a score to represent the probability of product falling or being dropped in a given department.
-	public double dropping_score(double population_density, double product_density, double max_ratio)
-	{
-//		Calculates a score to represent the probability of product falling or being dropped in a given department.
-//		param population_density
-//		param product_density
-//		param max_ratio
-//		return
-				  
-		return people_per_product_metric(population_density, product_density, max_ratio);
-	}
-	
-	//People per product
-	public double people_per_product(double population_density, double product_density)
-	{
-		  return population_density/product_density;
-	}
-
-	//visibility given perimeter and visible perimeter
-	public double cashier_visibility(double total_perimeter, double visible_perimeter)
-	{
-		  return visible_perimeter/total_perimeter;
-	}
-
-	//People per product metric
-	public double people_per_product_metric(double population_density, double product_density, double max_ratio)
-	{
-		  return population_density/(product_density*max_ratio);
-	}	
-	
 	
 	public void moveForward(map currentMap)
 	{

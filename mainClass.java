@@ -35,6 +35,7 @@ public class mainClass
 				}
 			}
 			newPeople(people, currentMap);
+			currentMap.printMap();
 //			System.out.println("");
 //			System.out.println("After iteration "+i);
 //			currentMap.printMap();
@@ -46,7 +47,11 @@ public class mainClass
 		System.out.println("");
 		System.out.println("Final Count: ");
 		System.out.println("Items bought: "+currentMap.getNumBought());
-		System.out.println("Items damaged: "+currentMap.getNumStolen());
+		System.out.println("Total items damaged: "+(currentMap.getNumRoughHandled()+currentMap.getNumOpened()+currentMap.getNumDropped()));
+		System.out.println("Items rough handled: "+currentMap.getNumRoughHandled());
+		System.out.println("Items opened: "+currentMap.getNumOpened());
+		System.out.println("Items dropped: "+currentMap.getNumDropped());
+
 	}
 	
 	private static void newPeople(ArrayList<person> people, map currentMap) 

@@ -2,69 +2,71 @@ package immc;
 public class map 
 {
 	private item[][] map;
-	private int stolen;
 	private int bought;
+	private int roughHandling;
+	private int openedPackaging;
+	private int dropping;
 	private int initialItems;
 	private int doorX;
 	private int doorY;
+	private int cshRegX;
+	private int cshRegY;
 	
 	public map()
 	{
 		map=newMap();
-		stolen=0;
 		bought=0;
+		roughHandling=0;
+		openedPackaging=0;
+		dropping=0;
 	}
 	
 	private item[][] newMap() 
 	{
 		//set number of items to what you need. only in this class, because it might change based on the map.
-		initialItems=50;
+		initialItems=257+383+444+181+50+220+55;
 		
 		item cshReg = new item("cash register");
 		item door = new item("door");
 		
 		//Appliances
-		item groupA = new item("A", 257, 10.87);
-		//Audio
-		item groupB = new item("B", 50, 18.29);
-		//Cameras
-		item groupC = new item("C", 220, 13.04);
-		//Cell Phones
-		item groupD = new item("D", 55, 15.38);
-		//Computers and Tablets
-		item groupE = new item("E", 444, 15.32);
+		item groupA = new item("C", 257, 10.87, 144);
 		//TV and Home Theater
-		item groupF = new item("F", 383, 11.13);
+		item groupB = new item("B", 383, 11.13, 73);
+		//Computers and Tablets
+		item groupC = new item("C", 444, 15.32, 138);
 		//Video Gaming
-		item groupG = new item("G", 181, 15.97);
+		item groupD = new item("D", 181, 15.97, 104);
+		//Audio, Cell Phones, and Cameras
+		item groupE = new item("E", 50+220+55, 18.29+13.04+15.38, 32);
 		
 		//26 by 26 array. perimeter is walls, so actually 24 by 24 array of items, with each item measuring 2m by 2m.
 		item[][] array = new item[][] {
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
-		    {wall(), path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupG, path(), path(), groupG, path(), path(), groupG, path(), path(), path(), path(), path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupG, path(), path(), groupG, path(), path(), groupG, path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), path(), groupG, path(), path(), groupG, path(), path(), groupG, path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupF, groupF, path(), groupF, groupF, path(), groupF, groupF, path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupF, groupF, path(), groupF, groupF, path(), groupF, groupF, path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupA, path(), groupA, groupA, groupA, groupA, path(), groupA, path(), path(), path(), path(), wall()},
-		    {wall(), groupA, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupA, path(), groupA, groupA, groupA, groupA, path(), groupA, path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupA, path(), groupA, groupA, groupA, groupA, path(), groupA, path(), path(), groupE, path(), wall()},
-		    {wall(), groupA, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), groupE, groupE, groupE, groupE, path(), groupE, path(), path(), path(), path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), wall()},
-		    {wall(), cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), groupA, groupA, groupA, groupA, groupA, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), path(), path(), path(), wall()},
+		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupB, path(), wall()},
+		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), path(), path(), wall()},
+		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), groupE, groupE, groupE, groupE, path(), groupE, path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), path(), cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(),  door , wall(), wall(), wall(), wall(), wall()},
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
 		};
@@ -72,99 +74,15 @@ public class map
 		doorX=20;
 		doorY=25;
 		
+		cshRegX=8;
+		cshRegY=24;
+		
 		return array;
 	}
-
-//	private item[][] newMap() 
-//	{
-//		//set number of items to what you need. only in this class, because it might change based on the map.
-//		initialItems=50;
-//		
-//		item cReg = new item("cash register");
-//		item door = new item("door");
-//		
-//		item[][] array = new item[][] {
-//		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
-//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
-//		    {wall(), path(), hPhn(), hPhn(), hPhn(), hPhn(), hPhn(), hPhn(), path(), wall()},
-//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
-//		    {wall(), path(), hPhn(), hPhn(), hPhn(), hPhn(), hPhn(), hPhn(), path(), wall()},
-//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
-//		    {wall(), path(), path(), path(), hPhn(), path(), hPhn(), path(), hPhn(), wall()},
-//		    {wall(), path(), path(), path(), hPhn(), path(), hPhn(), path(), hPhn(), wall()},
-//		    {wall(), cReg, cReg, path(), path(), path(), hPhn(), path(), hPhn(), wall()},
-//		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), door, wall(), wall()},
-//		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
-//		};
-//		
-//		doorX=7;
-//		doorY=9;
-//		
-//		return array;
-//	}
-
-	private item grpA() 
-	{
-		//Appliances
-		return new item("A", 257/2, 10.87);
-	}
-	
-	private item grpB() 
-	{
-		//Audio
-		return new item("B", 50, 18.29);
-	}
-
-	private item grpC() 
-	{
-		//Cameras
-		return new item("C", 220, 13.04);
-	}
-	
-	private item grpD() 
-	{
-		//Cell Phones
-		return new item("D", 55, 15.38);
-	}
-	
-	private item grpE() 
-	{
-		//Computers and Tablets
-		return new item("E", 444/2, 15.32);
-	}
-	
-	private item grpF() 
-	{
-		//TV and Home Theater
-		return new item("F", 383, 11.13);
-	}
-	
-	private item grpG() 
-	{
-		//Video Gaming
-		return new item("G", 181, 15.97);
-	}
-
-	private item grpH() 
-	{
-		//Appliances 2.0
-		return new item("H", 257/2+1, 10.87);
-	}
-	
-//	private item grpI() 
-//	{
-//		//Computers and Tablets 2.0
-//		return new item("I", 444/2, 15.32);
-//	}
 	
 	private item wall() 
 	{
 		return new item("wall");
-	}
-	
-	private item hPhn() 
-	{
-		return new item("bd D earbuds", 25, 44.6);
 	}
 
 	private item path() 
@@ -177,14 +95,22 @@ public class map
 		map[r][c].addItem();
 	}
 	
-	public void removeItem(int r, int c, boolean damage)
+	public void removeItem(int r, int c, String string)
 	{
 		//this part of the code is irrelevant for now, but it's here if we need it.
 		if (map[r][c].currentItems()!=0)
 		{
-			if (damage)
+			if (string.equals("roughHandled"))
 			{
-				stolen++;
+				roughHandling++;
+			}
+			else if (string.equals("opened"))
+			{
+				openedPackaging++;
+			}
+			else if (string.equals("dropped"))
+			{
+				dropping++;
 			}
 			else
 			{
@@ -201,6 +127,16 @@ public class map
 		map[r][c].removeItem();
 	}
 	
+	public int getItemNum(int r, int c)
+	{
+		return map[r][c].currentItems();
+	}
+	
+	public item getItem(int r, int c)
+	{
+		return map[r][c];
+	}
+	
 	public int getDoorX()
 	{
 		return doorX;
@@ -209,6 +145,16 @@ public class map
 	public int getDoorY()
 	{
 		return doorY;
+	}
+	
+	public int getCashRegisterX()
+	{
+		return cshRegX;
+	}
+	
+	public int getCashRegisterY()
+	{
+		return cshRegY;
 	}
 
 	public boolean onCashRegistar(int r, int c) 
@@ -243,9 +189,19 @@ public class map
 		return initialItems;
 	}
 	
-	public int getNumStolen()
+	public int getNumRoughHandled()
 	{
-		return stolen;
+		return roughHandling;
+	}
+	
+	public int getNumOpened()
+	{
+		return openedPackaging;
+	}
+	
+	public int getNumDropped()
+	{
+		return dropping;
 	}
 	
 	public int getNumBought()
@@ -317,5 +273,10 @@ public class map
 			newString=string.substring(0,totalSpace);
 		}
 		return newString;
+	}
+
+	public double getPopularityScore(int newR, int newC) 
+	{
+		return map[newR][newC].getPopularityScore();
 	}
 }
