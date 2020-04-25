@@ -7,8 +7,8 @@ public class probabilities
 	private double pp;
 	private double[] weight;
 	//coordinates, (x, y) : (c, r)
-	private int cashierX;
-	private int cashierY;
+	private double[] cashierX;
+	private double[] cashierY;
 	private int departmentX;
 	private int departmentY;
 	private map currentMap;
@@ -78,7 +78,15 @@ public class probabilities
 
 	private double getDistance() 
 	{
-		double distance=(Math.sqrt(Math.pow((double)cashierX*2.0-departmentX*2.0, 2)+Math.pow((double)cashierY*2.0-departmentY*2.0, 2)));
-		return distance;
+		double minDistance=(double)Integer.MAX_VALUE;
+		for (int i = 0; i<7; i++)
+		{
+			double distance=(Math.sqrt(Math.pow((double)cashierX[i]*2.0-departmentX*2.0, 2)+Math.pow((double)cashierY[i]*2.0-departmentY*2.0, 2)));
+			if (distance<minDistance)
+			{
+				minDistance=distance;
+			}
+		}
+		return minDistance;
 	}
 }

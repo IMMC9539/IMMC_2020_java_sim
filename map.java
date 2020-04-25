@@ -9,8 +9,8 @@ public class map
 	private int initialItems;
 	private int doorX;
 	private int doorY;
-	private int cshRegX;
-	private int cshRegY;
+	private double cshRegX[];
+	private double cshRegY[];
 	
 	public map()
 	{
@@ -71,6 +71,7 @@ public class map
 //		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
 //		};
 		
+		//our new and improved layout
 		item[][] array = new item[][] {
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
 		    {wall(), path(), groupB, groupB, path(), groupB, groupB, groupB, groupB, groupB, groupB, groupB, groupB, path(), groupB, groupB, groupB, groupB, groupB, path(), groupB, groupB, groupB, groupB, path(), wall()},
@@ -82,7 +83,7 @@ public class map
 		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), wall()},
 		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), path(), groupA, groupA, groupA, groupA, groupA, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, wall()},
 		    {wall(), path(), cshReg, cshReg, path(), cshReg, cshReg, path(), path(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), cshReg, cshReg, path(), cshReg, cshReg, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), cshReg, cshReg, path(), path(), path(), path(), wall()},
 		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), wall()},
 		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupD, path(), groupD, path(), groupD, wall()},
 		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupD, path(), groupD, path(), groupD, wall()},
@@ -104,8 +105,8 @@ public class map
 		doorX=20;
 		doorY=25;
 		
-		cshRegX=13;
-		cshRegY=13;
+		cshRegX=new double[] {2.5, 5.5, 10.5, 13.5, 10.5, 12.0, 13.5, 19.0};
+		cshRegY=new double[] {9.0, 9.0, 5.0, 5.0, 20.0, 21.0, 20.0, 10.0};
 		
 		return array;
 	}
@@ -177,12 +178,12 @@ public class map
 		return doorY;
 	}
 	
-	public int getCashRegisterX()
+	public double[] getCashRegisterX()
 	{
 		return cshRegX;
 	}
 	
-	public int getCashRegisterY()
+	public double[] getCashRegisterY()
 	{
 		return cshRegY;
 	}
