@@ -23,7 +23,7 @@ public class probabilities
 	{
 		currentMap=givenMap;
 		pp = currentMap.getItem(departmentGivenR, departmentGivenC).getPopularityScore()/100;
-		weight = new double[] {0.2, 0.1, 0.7, 0.7, 0.3, 0.425, 0.425, 0.15};  //In order of opening package, rough handling, and total damage score
+		weight = new double[] {0.2, 0.1, 0.7, 0.7, 0.3, 0.425, 0.15, 0.425};  //In order of opening package, rough handling, and total damage score
 		
 		people = currentMap.getItemNum(personGivenR, personGivenC);
 		product = currentMap.getItemNum(departmentGivenR, departmentGivenC);
@@ -37,21 +37,21 @@ public class probabilities
 	
 	public double calculateDropping()
 	{
-		return people_per_product_metric();
+		return weight[7]*(people_per_product_metric());
 	}
 	
 	public double calculateOpening()
 	{
 		double ppp = people_per_product_metric();
 	 	double vis = visibility();
-	 	return weight[0] * ppp + weight[1] * pp + weight[2] * vis;
+	 	return weight[6]*(weight[0] * ppp + weight[1] * pp + weight[2] * vis);
 	}
 	
 	public double calculateRoughHandling()
 	{
 		double ppp = people_per_product_metric();
 		double vis = visibility();
-		return weight[3] * ppp + weight[4] * vis;
+		return weight[5]*(weight[3] * ppp + weight[4] * vis);
 	}
 	
 	//People per product metric
