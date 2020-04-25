@@ -40,33 +40,63 @@ public class map
 		//Audio, Cell Phones, and Cameras
 		item groupE = new item("E", 50+220+55, 18.29+13.04+15.38, 32);
 		
-		//26 by 26 array. perimeter is walls, so actually 24 by 24 array of items, with each item measuring 2m by 2m.
+		//26 by 26 array. perimeter is walls, so actually 24 by 24 array of items, with each item measuring 2m by 2m. Based on the given store layout.
+//		item[][] array = new item[][] {
+//		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
+//		    {wall(), path(), path(), groupA, groupA, groupA, groupA, groupA, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), path(), wall()},
+//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), path(), path(), path(), wall()},
+//		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupB, path(), wall()},
+//		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), path(), path(), wall()},
+//		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), groupE, groupE, groupE, groupE, path(), groupE, path(), path(), path(), path(), wall()},
+//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+//		    {wall(), path(), cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+//		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(),  door , wall(), wall(), wall(), wall(), wall()},
+//		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
+//		};
+		
 		item[][] array = new item[][] {
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
-		    {wall(), path(), path(), groupA, groupA, groupA, groupA, groupA, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), groupB, groupB, groupB, groupB, groupB, path(), path(), path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), path(), path(), path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupC, groupC, path(), groupC, groupC, path(), groupC, groupC, path(), path(), groupB, path(), wall()},
-		    {wall(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), path(), path(), wall()},
-		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupC, path(), groupC, groupC, groupC, groupC, path(), groupC, path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), groupD, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupE, path(), groupE, groupE, groupE, groupE, path(), groupE, path(), path(), path(), path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
-		    {wall(), path(), cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, cshReg, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), groupB, groupB, path(), groupB, groupB, groupB, groupB, groupB, groupB, groupB, groupB, path(), groupB, groupB, groupB, groupB, groupB, path(), groupB, groupB, groupB, groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, groupB, groupB, groupB, groupB, path(), groupB, groupB, groupB, groupB, groupB, wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), groupE, path(), groupE, groupE, groupE, groupE, path(), groupE, path(), cshReg, cshReg, path(), cshReg, cshReg, path(), path(), path(), path(), path(), path(), path(), groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), path(), groupA, groupA, groupA, groupA, groupA, path(), path(), groupB, path(), path(), groupB, path(), path(), groupB, wall()},
+		    {wall(), path(), cshReg, cshReg, path(), cshReg, cshReg, path(), path(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), cshReg, cshReg, path(), cshReg, cshReg, path(), wall()},
+		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), groupA, path(), groupA, groupA, path(), groupA, groupA, path(), groupA, groupA, path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), groupA, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), cshReg, cshReg, path(), cshReg, cshReg, path(), path(), path(), path(), groupD, path(), groupD, path(), groupD, wall()},
+		    {wall(), groupC, path(), groupC, groupC, path(), groupC, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), cshReg, cshReg, cshReg, path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
+		    {wall(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), path(), wall()},
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(),  door , wall(), wall(), wall(), wall(), wall()},
 		    {wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall(), wall()},
 		};
@@ -74,8 +104,8 @@ public class map
 		doorX=20;
 		doorY=25;
 		
-		cshRegX=8;
-		cshRegY=24;
+		cshRegX=13;
+		cshRegY=13;
 		
 		return array;
 	}

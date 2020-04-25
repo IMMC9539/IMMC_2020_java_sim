@@ -57,14 +57,11 @@ public class probabilities
 	//People per product metric
 	public double people_per_product_metric()
 	{
-		System.out.println("population_density: "+population_density()+" product_density: "+product_density());
 	    return population_density()/(product_density() * max_ppp);
 	}
 	
 	public double population_density()
 	{
-		System.out.println("* number of people "+people);
-		System.out.println("department area"+departmentArea);
 	    return (double)people+1/personArea;
 	}
 	

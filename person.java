@@ -16,9 +16,6 @@ public class person
 	
 	private void onItem(map currentMap, int newR, int newC) 
 	{
-		System.out.println("");
-		System.out.println("Department "+currentMap.getDepartment(newR, newC));
-
 		double probability = (Math.random());
 		double popularityScore = currentMap.getPopularityScore(newR, newC)/100;
 		
@@ -27,15 +24,6 @@ public class person
 		double roughHandlingScore = 0.1*p.calculateRoughHandling();
 		double openingPackagingScore = 0.1*p.calculateOpening();
 		double droppingScore = 0.1*p.calculateDropping();
-		
-		System.out.println("rough handling score: "+ roughHandlingScore);
-		System.out.println("opening score: "+ openingPackagingScore);
-		System.out.println("dropping score: "+ droppingScore);
-		System.out.println("----------------------------");
-		System.out.println("Items rough handled: "+currentMap.getNumRoughHandled());
-		System.out.println("Items opened: "+currentMap.getNumOpened());
-		System.out.println("Items dropped: "+currentMap.getNumDropped());
-
 				
 		//buy the item
 		if (probability<popularityScore)
