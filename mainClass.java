@@ -10,12 +10,14 @@ public class mainClass
 		ArrayList<person> people = new ArrayList<person>();
 		map currentMap = new map();
 		
+		int maxPeople=50;
+		
 		currentMap.printMap();
 		//each counter is approximately 1-2 minutes
-		for (int i = 0; i<200; i++)
+		for (int i = 0; i<20; i++)
 		{
-			System.out.println("");
-			System.out.println("Start of iteration "+i);
+//			System.out.println("");
+//			System.out.println("Start of iteration "+i);
 			for (person p:people)
 			{
 				//remove people from previous step
@@ -34,8 +36,7 @@ public class mainClass
 					people.remove(j);
 				}
 			}
-			newPeople(people, currentMap);
-			currentMap.printMap();
+			maxPeople=newPeople(people, currentMap, maxPeople);
 //			System.out.println("");
 //			System.out.println("After iteration "+i);
 //			currentMap.printMap();
@@ -45,24 +46,35 @@ public class mainClass
 		currentMap.printMap();
 		
 		System.out.println("");
-		System.out.println("Final Count: ");
+		System.out.println("Final Count");
+		System.out.println("Initial items: "+currentMap.getNumInitial());
 		System.out.println("Items bought: "+currentMap.getNumBought());
 		System.out.println("Total items damaged: "+(currentMap.getNumRoughHandled()+currentMap.getNumOpened()+currentMap.getNumDropped()));
+		System.out.println("Remaining items: "+(currentMap.getNumInitial()-currentMap.getNumBought()-(currentMap.getNumRoughHandled()+currentMap.getNumOpened()+currentMap.getNumDropped())));
+		System.out.println("----------------------------");
 		System.out.println("Items rough handled: "+currentMap.getNumRoughHandled());
 		System.out.println("Items opened: "+currentMap.getNumOpened());
 		System.out.println("Items dropped: "+currentMap.getNumDropped());
+		
 
 	}
 	
-	private static void newPeople(ArrayList<person> people, map currentMap) 
+	private static int newPeople(ArrayList<person> people, map currentMap, int maxPeople) 
 	{
 		int number = (int)(Math.random()*5);
+
+		if (maxPeople<5)
+		{
+			number = (int)(Math.random()*maxPeople);
+		}
 		
 		for (int i = 0; i<number; i++)
 		{
 			people.add(new person(currentMap.getDoorY(), currentMap.getDoorX()));
 			currentMap.addItem(currentMap.getDoorY(), currentMap.getDoorX());
 		}
+		
+		return maxPeople-number;
 	}
 
 }

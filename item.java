@@ -12,6 +12,7 @@ public class item
 		itemId=givenItem;
 		numberOfItems=0;
 		popularity=0;
+		totalArea=4;
 	}
 	
 	public item(String givenItem, int givenNumber, double  givenPopularity, int givenArea) 

@@ -22,7 +22,6 @@ public class person
 		 * if we can implement the actual percent chances and the distance from the cash registar
 		 * and all, this will be a much stronger model.
 		 */
-		System.out.println("r: "+r+" c: "+c);
 		double probability = 100*(Math.random());
 		double popularityScore = currentMap.getPopularityScore(newR, newC);
 		
@@ -31,6 +30,8 @@ public class person
 		double roughHandlingScore = 0.1*p.calculateRoughHandling();
 		double openingPackagingScore = 0.1*p.calculateOpening();
 		double droppingScore = 0.1*p.calculateDropping();
+		
+		System.out.println("rough handling: "+roughHandlingScore+" open packaging: "+openingPackagingScore+" dropping score: "+droppingScore);
 		
 		//buy the item
 		if (probability<popularityScore)
