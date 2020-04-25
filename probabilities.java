@@ -54,31 +54,28 @@ public class probabilities
 		return weight[3] * ppp + weight[4] * vis;
 	}
 	
-	//People per product
-	public double people_per_product()
-	{
-	    return population_density()/product_density();
-	}
-	
 	//People per product metric
 	public double people_per_product_metric()
 	{
+		System.out.println("population_density: "+population_density()+" product_density: "+product_density());
 	    return population_density()/(product_density() * max_ppp);
 	}
 	
 	public double population_density()
 	{
-	    return people/personArea;
+		System.out.println("* number of people "+people);
+		System.out.println("department area"+departmentArea);
+	    return (double)people+1/personArea;
 	}
 	
 	public double product_density()
 	{
-	    return product/departmentArea;
+	    return (double)product/departmentArea;
 	}
 	
 	public double visibility()
 	{
-		double distance = (getDistance()/max_dist);
+		double distance = (max_dist-getDistance()/max_dist);
 		return Math.pow(Math.E, (-1 * (1 - pp) * (Math.pow(distance, 2))));
 	}
 

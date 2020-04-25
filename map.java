@@ -30,9 +30,9 @@ public class map
 		item door = new item("door");
 		
 		//Appliances
-		item groupA = new item("C", 257, 10.87, 144);
+		item groupA = new item("A", 257, 10.87, 144);
 		//TV and Home Theater
-		item groupB = new item("B", 383, 11.13, 73);
+		item groupB = new item("B", 383, 11.13, 73+156);
 		//Computers and Tablets
 		item groupC = new item("C", 444, 15.32, 138);
 		//Video Gaming
@@ -278,5 +278,10 @@ public class map
 	public double getPopularityScore(int newR, int newC) 
 	{
 		return map[newR][newC].getPopularityScore();
+	}
+
+	public String getDepartment(int newR, int newC) 
+	{
+		return map[newR][newC].getItemId();
 	}
 }

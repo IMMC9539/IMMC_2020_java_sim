@@ -16,12 +16,9 @@ public class person
 	
 	private void onItem(map currentMap, int newR, int newC) 
 	{
-		/*
-		 * this is where all the probability stuff for damage and all would go.
-		 * honestly, please change the way that the probability stuff is being done because
-		 * if we can implement the actual percent chances and the distance from the cash registar
-		 * and all, this will be a much stronger model.
-		 */
+		System.out.println("");
+		System.out.println("Department "+currentMap.getDepartment(newR, newC));
+
 		double probability = (Math.random());
 		double popularityScore = currentMap.getPopularityScore(newR, newC)/100;
 		
@@ -31,7 +28,6 @@ public class person
 		double openingPackagingScore = 0.1*p.calculateOpening();
 		double droppingScore = 0.1*p.calculateDropping();
 		
-		System.out.println("");
 		System.out.println("rough handling score: "+ roughHandlingScore);
 		System.out.println("opening score: "+ openingPackagingScore);
 		System.out.println("dropping score: "+ droppingScore);
